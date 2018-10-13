@@ -12,5 +12,11 @@ pipeline {
         sh 'npm install'
       }
     }
+    stage('Deliver') {
+      steps {
+        sh 'npm run mock'
+        input 'End'
+      }
+    }
   }
 }
