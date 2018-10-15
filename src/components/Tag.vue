@@ -49,7 +49,7 @@ export default {
 <style lang="scss" scoped>
 @import "../style/config";
 .tag-main {
-  margin: 20px 20px 20px 20px;
+  margin: 20px 20px 20px 0px;
   min-width: 250px;
   height: 320px;
   display: flex;

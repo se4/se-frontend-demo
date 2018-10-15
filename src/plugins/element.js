@@ -14,7 +14,10 @@ import {
   Notification,
   Row,
   Col,
-  Card
+  Card,
+  Radio,
+  RadioGroup,
+  RadioButton
 } from "element-ui";
 
 Vue.use(Button);
@@ -31,5 +34,8 @@ Vue.use(Alert);
 Vue.use(Row);
 Vue.use(Col);
 Vue.use(Card);
+Vue.use(Radio);
+Vue.use(RadioGroup);
+Vue.use(RadioButton);
 
 Vue.prototype.$notify = Notification;

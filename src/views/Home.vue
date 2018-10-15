@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="title">
-      Tags
+      我的小组
     </div> 
     <div class="decoration"/>
     <div class="tag-container">

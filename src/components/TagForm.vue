@@ -4,67 +4,54 @@
       ref="ruleForm" 
       :model="ruleForm" 
       :rules="rules" 
-      label-width="100px" 
+      label-width="80px" 
       class="form-body">
       <el-form-item 
-        label="个人昵称" 
+        label="团队名称"
         prop="name">
-        <el-input v-model="ruleForm.nickname"/>
+        <el-input v-model="ruleForm.name"/>
       </el-form-item>
       <el-form-item 
-        label="个人简介" 
-        prop="bio">
-        <el-input 
-          :rows="4" 
-          v-model="ruleForm.bio" 
-          type="textarea"/>
+        label="团队类型" 
+        prop="type">
+        <el-radio-group v-model="ruleForm.type">
+          <el-radio label="GROUP"/>
+          <el-radio label="CLASS"/>
+        </el-radio-group>
       </el-form-item>
       <el-form-item>
         <el-button 
           type="primary" 
-          @click="submitForm('ruleForm')">保存修改</el-button>
+          @click="submitForm('ruleForm')">立即创建</el-button>
       </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script>
-import { FETCH_PROFILE, UPDATE_PROFILE } from "@/store/type/actions.type";
+import { ADD_TAGS } from "@/store/type/actions.type";
 export default {
-  name: "UserInfoForm",
+  name: "TagForm",
   data() {
     return {
       ruleForm: {
-        nickname: "",
-        avatar: "",
-        bio: ""
+        name: "",
+        type: ""
       },
       rules: {
         name: [
           { min: 3, max: 10, message: "长度在 3 到 10 个字符", trigger: "blur" }
         ],
-        bio: [
-          {
-            min: 0,
-            max: 100,
-            message: "长度在 0 到 100 个字符",
-            trigger: "blur"
-          }
-        ]
+        type: [{ required: true, message: "请选择团队类型", trigger: "change" }]
       }
     };
-  },
-  async mounted() {
-    // const profile = await this.$store.dispatch(FETCH_PROFILE, "username");
-    this.ruleForm.nickname = "aaa";
-    // this.ruleForm.avatar = profile.avatar;
-    // this.ruleForm.bio = profile.bio;
   },
   methods: {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          this.$store.dispatch(UPDATE_PROFILE, this.ruleForm);
+          console.log(this.ruleForm);
+          this.$store.dispatch(ADD_TAGS, this.ruleForm);
         } else {
           return false;
         }
