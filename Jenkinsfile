@@ -1,22 +1,23 @@
 pipeline {
-  agent {
-    docker {
-      image 'node:6-alpine'
-      args '-p 3000:3000'
+    agent {
+        docker {
+            image 'node:6-alpine'
+            args '-p 3000:3000'
+        }
     }
-
-  }
-  stages {
-    stage('Build') {
-      steps {
-        sh 'npm install'
-      }
+    environment {
+        CI = 'true' 
     }
-    stage('Deliver') {
-      steps {
-        sh 'npm run mock'
-        input 'End'
-      }
+    stages {
+        stage('Build') {
+            steps {
+                sh 'npm install'
+            }
+        }
+        stage('Test') { 
+            steps {
+                sh './jenkins/scripts/test.sh' 
+            }
+        }
     }
-  }
 }
