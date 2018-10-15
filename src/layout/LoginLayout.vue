@@ -1,9 +1,9 @@
 <template>
   <el-container class="outer-container">
+    <div class="header-container">
+      <login-mooc-header/>
+    </div>
     <el-main>
-      <div class="logo">
-        MOOC
-      </div>
       <div class="container">
         <div class="container__main">
           <router-view/>
@@ -20,8 +20,11 @@
 </template>
 
 <script>
+import LoginMoocHeader from "@/components/LoginHeader";
+
 export default {
-  name: "LoginLayout"
+  name: "LoginLayout",
+  components: { LoginMoocHeader },
 };
 </script>
 
@@ -34,6 +37,11 @@ export default {
   color: $logo-color;
   font-size: $logo-font-size;
   font-family: $logo-font-family;
+}
+
+.header-container {
+  height: 70px;
+  width: 100%
 }
 
 .outer-container {

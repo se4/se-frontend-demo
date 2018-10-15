@@ -1,6 +1,12 @@
 import Vue from "vue";
 import Router from "vue-router";
-import { LOGIN_ROUTER, REGISTER_ROUTER, HOME_ROUTER } from "@/router/name";
+import {
+  LOGIN_ROUTER,
+  REGISTER_ROUTER,
+  HOME_ROUTER,
+  USER_INFO_ROUTER,
+  GROUP_ROUTER
+} from "@/router/name";
 
 Vue.use(Router);
 
@@ -26,10 +32,29 @@ export default new Router({
       ]
     },
     {
-      name: HOME_ROUTER,
       path: "/",
-      component: () => import("@/views/Home"),
-      meta: { requiresAuth: true }
+      component: () => import("@/layout/DefaultLayout"),
+      meta: { requiresAuth: true },
+      children: [
+        {
+          name: HOME_ROUTER,
+          path: "",
+          component: () => import("@/views/Home"),
+          meta: { requiresAuth: true }
+        },
+        {
+          name: GROUP_ROUTER,
+          path: "/group",
+          component: () => import("@/views/Group"),
+          meta: { requiresAuth: true }
+        },
+        {
+          name: USER_INFO_ROUTER,
+          path: "/user",
+          component: () => import("@/views/UserInfo"),
+          meta: { requiresAuth: true }
+        }
+      ]
     }
   ]
 });

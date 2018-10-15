@@ -4,6 +4,7 @@
       Tags
     </div> 
     <div class="decoration"/>
+    <tag-list />
     <el-row :gutter="20">
       <el-col 
         v-for="item in tags" 
@@ -20,6 +21,7 @@
 <script>
 import { mapState } from "vuex";
 import { FETCH_TAGS } from "@/store/type/actions.type";
+import TagList from "@/components/TagList/TagList";
 export default {
   name: "Home",
   data() {
@@ -28,6 +30,7 @@ export default {
       password: null
     };
   },
+  components: { TagList },
   computed: {
     ...mapState({
       tags: state => state.user.tags
