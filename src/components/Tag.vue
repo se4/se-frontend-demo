@@ -54,7 +54,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 5px 35px rgba(0, 0, 0, 1%);
+  box-shadow: 0 5px 35px rgba(100, 100, 100, 1%);
   border-radius: 3px;
   .tag-top {
     height: 100%;
