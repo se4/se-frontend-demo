@@ -1,13 +1,12 @@
 <template>
-    <h3>TagList</h3>
+  <h3>TagList</h3>
 </template>
 
 <script>
 export default {
-    name: "TagList",
-}
+  name: "TagList"
+};
 </script>
 
 <style>
-
 </style>

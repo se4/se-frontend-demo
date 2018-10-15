@@ -24,7 +24,7 @@ import LoginMoocHeader from "@/components/LoginHeader";
 
 export default {
   name: "LoginLayout",
-  components: { LoginMoocHeader },
+  components: { LoginMoocHeader }
 };
 </script>
 
@@ -41,7 +41,7 @@ export default {
 
 .header-container {
   height: 70px;
-  width: 100%
+  width: 100%;
 }
 
 .outer-container {

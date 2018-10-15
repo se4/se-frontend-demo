@@ -24,13 +24,13 @@ import { FETCH_TAGS } from "@/store/type/actions.type";
 import TagList from "@/components/TagList/TagList";
 export default {
   name: "Home",
+  components: { TagList },
   data() {
     return {
       email: null,
       password: null
     };
   },
-  components: { TagList },
   computed: {
     ...mapState({
       tags: state => state.user.tags

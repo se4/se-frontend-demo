@@ -24,7 +24,7 @@ import MoocHeader from "@/components/MoocHeader";
 
 export default {
   name: "DefaultLayout",
-  components: { MoocHeader },
+  components: { MoocHeader }
 };
 </script>
 
@@ -41,7 +41,7 @@ export default {
 
 .header-container {
   height: 70px;
-  width: 100%
+  width: 100%;
 }
 
 .outer-container {
