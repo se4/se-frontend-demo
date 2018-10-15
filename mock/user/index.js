@@ -1,38 +1,38 @@
 const express = require("express");
 const router = express.Router();
+const UserSerializer = require("../serializers/UserSerializer");
+const TagSerializer = require("../serializers/TagSerializer");
 
-router.route("/profile").get((req, res) => {
+router.route("/:userId").get((req, res) => {
   res.send({
-    avatar:
-      "https://bequank.oss-cn-beijing.aliyuncs.com/web-gallery/pixiv39957555.jpg?x-oss-process=style/avatar",
-    username: "kunduin",
-    nickname: "bbbbbbbb",
-    bios: "哈哈哈哈哈哈哈哈哈哈哈哈"
+    data: UserSerializer(),
+    abilities: {
+      update: true
+    }
   });
 });
 
-router.route("/tag").get((req, res) => {
+router.route("/:userId").post((req, res) => {
   res.send({
-    tags: [
-      {
-        id: "1",
-        name: "软件工程 Ⅱ",
-        createTime: "2018-10-5"
-      },
-      {
-        id: "2",
-        name: "GATSBY小组",
-        createTime: "2018-9-2"
-      }
-    ]
+    data: UserSerializer(),
+    abilities: {
+      update: true
+    }
   });
 });
 
-router.route("/tag").post((req, res) => {
+router.route("/:userId/password").post((req, res) => {
   res.send({
-    id: "1",
-    name: "软件工程 Ⅱ",
-    createTime: "2018-10-5"
+    data: UserSerializer(),
+    abilities: {
+      update: true
+    }
+  });
+});
+
+router.route("/:userId/tag").post((req, res) => {
+  res.send({
+    data: TagSerializer()
   });
 });
 
