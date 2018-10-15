@@ -19,29 +19,29 @@ export default {
   name: "Tag",
   props: {
     tagId: {
-        type: String,
-        required: true
+      type: String,
+      required: true
     },
     tagType: {
-        type: String,
-        required: true
+      type: String,
+      required: true
     },
     shareLink: {
-        type: String,
-        required: true
+      type: String,
+      required: true
     },
     tagName: {
-        type: String,
-        required: true
+      type: String,
+      required: true
     },
     createdAt: {
-        type: String,
-        required: true
+      type: String,
+      required: true
     },
     upDatedAt: {
-        type: String,
-        required: true
-    },
+      type: String,
+      required: true
+    }
   }
 };
 </script>
