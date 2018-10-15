@@ -38,7 +38,7 @@ export default {
       type: String,
       required: true
     },
-    upDatedAt: {
+    updatedAt: {
       type: String,
       required: true
     }

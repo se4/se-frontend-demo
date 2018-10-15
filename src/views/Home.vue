@@ -43,10 +43,7 @@ export default {
     })
   },
   async mounted() {
-    await this.$store.dispatch(FETCH_TAGS);
-  },
-  methods: {
-    onSubmit() {}
+    await this.$store.dispatch(FETCH_TAGS, "id");
   }
 };
 </script>
