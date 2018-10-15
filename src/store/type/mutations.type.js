@@ -9,6 +9,5 @@ export const SET_PROFILE = "userProfileSetProfile";
 
 export const SET_TAGS = "setTags";
 export const ADD_TAG = "addTag";
-export const CREATE_TAG = "createNewTag";
 
 export const SET_CURRENT_TAG = "setCurrentTag";
