@@ -4,7 +4,13 @@
       Tags
     </div> 
     <div class="decoration"/>
-    <tag-list />
+    <tag 
+      tag-id="xxx" 
+      tag-type="GROUP" 
+      share-link="www.baidu.com" 
+      tag-name="TagMaker" 
+      created-at="2018-09-01" 
+      updated-at="2018-09-09" />
     <el-row :gutter="20">
       <el-col 
         v-for="item in tags" 
@@ -21,10 +27,10 @@
 <script>
 import { mapState } from "vuex";
 import { FETCH_TAGS } from "@/store/type/actions.type";
-import TagList from "@/components/TagList/TagList";
+import Tag from "@/components/Tag";
 export default {
   name: "Home",
-  components: { TagList },
+  components: { Tag },
   data() {
     return {
       email: null,
