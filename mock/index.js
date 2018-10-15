@@ -14,6 +14,7 @@ const router = express.Router();
 
 router.use("/authorization", require("./authorization"));
 router.use("/user", require("./user"));
+router.use("/tag", require("./tag"));
 
 app.use("/api/v1", router);
 app.listen(port);
