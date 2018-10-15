@@ -9,21 +9,40 @@ import { AUTH_MODULE } from "./_prefix";
 export const login = ({ username, password }) => {
   return request(`${AUTH_MODULE}/login`, {
     method: "POST",
-    params: {
+    body: {
       username: username || null,
       password: password || null
     }
   });
 };
 
+// /**
+//  * 注册 register
+//  * @param {object} {username,password} 注册信息
+//  */
+// export const register = ({ username, password }) => {
+//   return request(`${AUTH_MODULE}/register`, {
+//     method: "POST",
+//     body: {
+//       username: username || null,
+//       password: password || null
+//     }
+//   });
+// };
 /**
- * 注册 register
- * @param {object} {username,password} 注册信息
+ * register
+ * @param {object} {
+    nickname:"xxx",
+    username:"xxx", 
+    password:"xxx"
+}
+ * @returns {object} {}
  */
-export const register = ({ username, password }) => {
+export const register = ({ nickname, username, password }) => {
   return request(`${AUTH_MODULE}/register`, {
     method: "POST",
-    params: {
+    body: {
+      nickname: nickname || null,
       username: username || null,
       password: password || null
     }
