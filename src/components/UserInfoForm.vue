@@ -70,7 +70,10 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          this.$store.dispatch(UPDATE_PROFILE, {userid: this.userid, profile: this.ruleForm});
+          this.$store.dispatch(UPDATE_PROFILE, {
+            userid: this.userid,
+            profile: this.ruleForm
+          });
           alert("创建成功");
         } else {
           return false;
