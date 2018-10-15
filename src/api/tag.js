@@ -15,6 +15,6 @@ export const createTag = ({ type = "GROUP", name = "githubakers" }) => {
  * 获取用户标签
  * @returns {object} {data:[]}
  */
-export const getTagList = userid => {
+export const getTagList = (userid = null) => {
   return request(`${TAG_MODULE}?userId=${userid}`);
 };

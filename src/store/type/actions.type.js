@@ -6,3 +6,4 @@ export const UPDATE_PROFILE = "updateProfile";
 export const CHANGE_PASSWORD = "changePasswd";
 export const FETCH_TAGS = "fetchTags";
 export const ADD_TAGS = "addTags";
+export const CREATE_TAG = "createNewTag";
