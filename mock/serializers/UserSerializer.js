@@ -1,9 +1,9 @@
 const makeId = require("../util/makeId");
 
-module.exports = () => {
+module.exports = (role = "STUDENT") => {
   return {
     id: makeId(),
-    role: "STUDENT",
+    role: role,
     username: "kunduin",
     nickname: "Bay",
     bio: "小白白白最最最最帅帅帅帅帅帅帅帅",
