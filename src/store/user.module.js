@@ -61,7 +61,7 @@ const actions = {
     context.commit(SET_PROFILE, userSerializer);
     context.commit(SET_UPDATE, update);
   },
-  async [CHANGE_PASSWORD](context, userid, oldPassword) {
+  async [CHANGE_PASSWORD](context, { userid, oldPassword }) {
     const { userSerializer, abilities } = await generateUserSerializer(
       async () => await changePassword(userid, oldPassword)
     );
@@ -69,13 +69,13 @@ const actions = {
     context.commit(SET_PROFILE, userSerializer);
     context.commit(SET_UPDATE, update);
   },
-  async [UPDATE_PROFILE](context, userid, profile) {
+  async [UPDATE_PROFILE](context, { userid, profile }) {
     const { userSerializer } = await generateUserSerializer(
       async () => await updateProfile(userid, profile)
     );
     context.commit(SET_PROFILE, userSerializer);
   },
-  async [ADD_TAGS](context, userid, shareLink) {
+  async [ADD_TAGS](context, { userid, shareLink }) {
     const { tagSerializer } = await generateTagSerializer(
       async () => await addTag(userid, shareLink)
     );
