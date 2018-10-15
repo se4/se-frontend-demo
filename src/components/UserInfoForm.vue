@@ -63,7 +63,7 @@ export default {
     })
   },
   async mounted() {
-    await this.$store.dispatch(FETCH_PROFILE, this.username);
+    await this.$store.dispatch(FETCH_PROFILE, this.userid);
     this.ruleForm = this.profile;
   },
   methods: {
