@@ -30,6 +30,7 @@
 
 <script>
 import { FETCH_PROFILE, UPDATE_PROFILE } from "@/store/type/actions.type";
+import { mapState } from "vuex";
 export default {
   name: "UserInfoForm",
   data() {
@@ -54,18 +55,22 @@ export default {
       }
     };
   },
+  computed: {
+    ...mapState({
+      profile: state => state.user.profile,
+      username: state => state.user.profile.username,
+      userid: state => state.user.profile.userid
+    })
+  },
   async mounted() {
-    const profile = await this.$store.dispatch(FETCH_PROFILE, "username");
-    console.log(profile);
-    this.ruleForm.nickname = profile.nickname;
-    this.ruleForm.avatar = profile.avatar;
-    this.ruleForm.bio = profile.bio;
+    await this.$store.dispatch(FETCH_PROFILE, this.username);
+    this.ruleForm = this.profile;
   },
   methods: {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          this.$store.dispatch(UPDATE_PROFILE, this.ruleForm);
+          this.$store.dispatch(UPDATE_PROFILE, this.userid, this.ruleForm);
         } else {
           return false;
         }

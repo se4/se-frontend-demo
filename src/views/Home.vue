@@ -5,20 +5,15 @@
     </div> 
     <div class="decoration"/>
     <div class="tag-container">
-      <tag 
-        tag-id="xxx" 
-        tag-type="GROUP" 
-        share-link="www.baidu.com" 
-        tag-name="TagMaker" 
-        created-at="2018-09-01" 
-        updated-at="2018-09-09" />
-      <tag 
-        tag-id="xxx" 
-        tag-type="GROUP" 
-        share-link="www.baidu.com" 
-        tag-name="TagMaker" 
-        created-at="2018-09-01" 
-        updated-at="2018-09-09" />
+      <tag
+        v-for="item in tags" 
+        :key="item.id"
+        :tag-id="item.id"
+        :tag-type="item.type" 
+        :share-link="item.shareLink" 
+        :tag-name="item.name" 
+        :created-at="item.createdAt" 
+        :updated-at="item.updatedAt" />
     </div>
   </div>
 </template>
@@ -38,11 +33,12 @@ export default {
   },
   computed: {
     ...mapState({
-      tags: state => state.user.tags
+      tags: state => state.tag.tags,
+      userid: state => state.user.profile.userid
     })
   },
   async mounted() {
-    await this.$store.dispatch(FETCH_TAGS, "id");
+    await this.$store.dispatch(FETCH_TAGS, this.userid);
   }
 };
 </script>

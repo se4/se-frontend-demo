@@ -51,7 +51,6 @@ export default {
       this.$refs[formName].validate(valid => {
         if (valid) {
           this.$store.dispatch(ADD_TAGS, this.ruleForm);
-          alert("Success");
         } else {
           return false;
         }
