@@ -4,23 +4,22 @@
       Tags
     </div> 
     <div class="decoration"/>
-    <tag 
-      tag-id="xxx" 
-      tag-type="GROUP" 
-      share-link="www.baidu.com" 
-      tag-name="TagMaker" 
-      created-at="2018-09-01" 
-      updated-at="2018-09-09" />
-    <el-row :gutter="20">
-      <el-col 
-        v-for="item in tags" 
-        :key="item.id" 
-        :span="8">    
-        <el-card shadow="hover">
-          {{ item.name }}
-        </el-card>
-      </el-col>
-    </el-row>
+    <div class="tag-container">
+      <tag 
+        tag-id="xxx" 
+        tag-type="GROUP" 
+        share-link="www.baidu.com" 
+        tag-name="TagMaker" 
+        created-at="2018-09-01" 
+        updated-at="2018-09-09" />
+      <tag 
+        tag-id="xxx" 
+        tag-type="GROUP" 
+        share-link="www.baidu.com" 
+        tag-name="TagMaker" 
+        created-at="2018-09-01" 
+        updated-at="2018-09-09" />
+    </div>
   </div>
 </template>
 
@@ -65,6 +64,10 @@ export default {
     width: 50px;
     height: 5px;
     margin: 15px 5px 30px;
+  }
+  .tag-container {
+    display: flex;
+    justify-content: center;
   }
 }
 </style>

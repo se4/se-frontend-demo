@@ -5,9 +5,7 @@
     </div>
     <el-main>
       <div class="container">
-        <div class="container__main">
-          <router-view/>
-        </div>
+        <router-view/>
       </div>
     </el-main>
     <el-footer>
@@ -50,11 +48,8 @@ export default {
 .container {
   width: 100%;
   height: 100%;
-  .container__main {
-    max-width: 300px;
-    margin: 0 auto;
-    padding-bottom: 20px;
-  }
+  display: flex;
+  justify-content: center;
 }
 
 .author {

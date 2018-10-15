@@ -1,10 +1,20 @@
 <template>
-  <h1>UserInfo</h1>
+  <div class="main">
+    <user-info-form />
+  </div>
 </template>
 
 <script>
-export default {};
+import UserInfoForm from "@/components/UserInfoForm";
+
+export default {
+  components: { UserInfoForm },
+};
 </script>
 
-<style>
+<style lang="scss" scoped>
+.main {
+  width: 600px;
+  height: 100%;
+}
 </style>

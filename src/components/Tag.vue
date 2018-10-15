@@ -49,12 +49,13 @@ export default {
 <style lang="scss" scoped>
 @import "../style/config";
 .tag-main {
-  width: 250px;
+  margin: 20px 20px 20px 20px;
+  min-width: 250px;
   height: 320px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 5px 35px rgba(100, 100, 100, 1%);
+  box-shadow: 0 5px 35px rgba(150, 150, 150, 1%);
   border-radius: 3px;
   .tag-top {
     height: 100%;
