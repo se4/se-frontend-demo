@@ -50,8 +50,8 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          console.log(this.ruleForm);
           this.$store.dispatch(ADD_TAGS, this.ruleForm);
+          alert("Success");
         } else {
           return false;
         }

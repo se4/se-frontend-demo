@@ -55,10 +55,11 @@ export default {
     };
   },
   async mounted() {
-    // const profile = await this.$store.dispatch(FETCH_PROFILE, "username");
-    this.ruleForm.nickname = "aaa";
-    // this.ruleForm.avatar = profile.avatar;
-    // this.ruleForm.bio = profile.bio;
+    const profile = await this.$store.dispatch(FETCH_PROFILE, "username");
+    console.log(profile);
+    this.ruleForm.nickname = profile.nickname;
+    this.ruleForm.avatar = profile.avatar;
+    this.ruleForm.bio = profile.bio;
   },
   methods: {
     submitForm(formName) {
