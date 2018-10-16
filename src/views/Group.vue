@@ -29,4 +29,8 @@ export default {
   height: 5px;
   margin: 15px 5px 30px;
 }
+.group-main {
+  width: 600px;
+  height: 100%;
+}
 </style>

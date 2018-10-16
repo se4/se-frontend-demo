@@ -5,6 +5,7 @@ import {
   Header,
   Aside,
   Main,
+  Message,
   Footer,
   Form,
   FormItem,
@@ -24,6 +25,7 @@ Vue.use(Button);
 Vue.use(Container);
 Vue.use(Header);
 Vue.use(Main);
+Vue.component(Message);
 Vue.use(Footer);
 Vue.use(Aside);
 Vue.use(Form);
@@ -39,3 +41,4 @@ Vue.use(RadioGroup);
 Vue.use(RadioButton);
 
 Vue.prototype.$notify = Notification;
+Vue.prototype.$message = Message;

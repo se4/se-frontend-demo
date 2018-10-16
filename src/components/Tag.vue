@@ -88,8 +88,9 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    cursor: pointer;
     .tag-name {
-      font-size: 20px;
+      font-size: 24px;
       font-family: $logo-font-family;
       color: $logo-color;
       text-align: center;

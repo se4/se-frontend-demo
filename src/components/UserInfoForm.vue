@@ -74,7 +74,10 @@ export default {
             userid: this.userid,
             profile: this.ruleForm
           });
-          alert("创建成功");
+          this.$message({
+            message: '恭喜你，信息修改成功！',
+            type: 'success'
+          });
         } else {
           return false;
         }

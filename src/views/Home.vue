@@ -34,7 +34,7 @@ export default {
   computed: {
     ...mapState({
       tags: state => state.tag.tags,
-      userid: state => state.user.profile.userid
+      userid: state => state.user.profile.username
     })
   },
   async mounted() {
@@ -47,8 +47,9 @@ export default {
 @import "../style/config";
 .home {
   max-width: 900px;
+  height: 100%;
   margin: 0 auto;
-  padding: 20px 10px;
+ 
 
   .title {
     font-family: $logo-font-family;
@@ -63,7 +64,7 @@ export default {
   }
   .tag-container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
   }
 }
 </style>

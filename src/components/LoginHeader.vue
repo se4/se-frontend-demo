@@ -3,13 +3,7 @@
     <div class="header-body">
       <div class="header-left">
         <router-link 
-          to="/" 
-          class="header-link"><div class="header-link-text">主页</div></router-link>
-        <router-link 
-          to="/" 
-          class="header-link"><div class="header-link-text">主页</div></router-link>
-        <router-link 
-          to="/" 
+          to="#" 
           class="header-link"><div class="header-link-text">主页</div></router-link>
       </div>
       <div class="header-right">
