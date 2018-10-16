@@ -59,9 +59,9 @@ export default {
     text-align: center;
   }
   .decoration-container {
-  display: flex;
-  justify-content: center;
-}
+    display: flex;
+    justify-content: center;
+  }
   .decoration {
     background-color: $logo-color;
     width: 50px;
