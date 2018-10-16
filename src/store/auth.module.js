@@ -22,9 +22,9 @@ const actions = {
     try {
       const { data = {}, abilities = {} } = await login(credentials);
       const { update } = abilities;
-      const { token } = data;
+      const { token, user } = data;
       context.commit(SET_UPDATE, update);
-      context.commit(SET_AUTH, token);
+      context.commit(SET_AUTH, { token, user });
     } catch (e) {
       context.commit(SET_LOGIN_ERROR, true);
     }
@@ -50,7 +50,7 @@ const mutations = {
   },
   [SET_AUTH](state, user) {
     state.isAuthenticated = true;
-    saveToken(user.token);
+    saveToken(user.token, user.user);
   },
   [REMOVE_AUTH](state) {
     state.isAuthenticated = false;
