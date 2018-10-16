@@ -3,7 +3,9 @@
     <div class="title">
       创建团队
     </div> 
-    <div class="decoration"/>
+    <div class="decoration-container">
+      <div class="decoration"/>
+    </div>
     <tag-form/>
   </div>
 </template>
@@ -22,11 +24,20 @@ export default {
   font-family: $logo-font-family;
   font-size: $logo-font-size;
   color: $logo-color;
+  text-align: center;
+}
+.decoration-container {
+  display: flex;
+  justify-content: center;
 }
 .decoration {
   background-color: $logo-color;
   width: 50px;
   height: 5px;
   margin: 15px 5px 30px;
+}
+.group-main {
+  width: 600px;
+  height: 100%;
 }
 </style>

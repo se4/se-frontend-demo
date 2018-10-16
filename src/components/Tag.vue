@@ -49,7 +49,7 @@ export default {
 <style lang="scss" scoped>
 @import "../style/config";
 .tag-main {
-  margin: 20px 20px 20px 0px;
+  margin: 0px 20px 20px 0px;
   min-width: 250px;
   height: 320px;
   display: flex;
@@ -88,8 +88,9 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    cursor: pointer;
     .tag-name {
-      font-size: 20px;
+      font-size: 24px;
       font-family: $logo-font-family;
       color: $logo-color;
       text-align: center;

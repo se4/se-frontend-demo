@@ -13,15 +13,24 @@
           class="header-link"><div class="header-link-text">设置</div></router-link>
       </div>
       <div class="header-right">
-        <div class="header-logo">MOOC</div>
+        <div 
+          class="header-logo" 
+          @click="onLogout">MOOC</div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { LOGOUT } from "@/store/type/actions.type";
 export default {
-  name: "MoocHeader"
+  name: "MoocHeader",
+  methods: {
+    onLogout: function() {
+      this.$store.dispatch(LOGOUT);
+      this.$router.replace("/login");
+    }
+  }
 };
 </script>
 
@@ -57,6 +66,7 @@ export default {
         text-align: center;
         font-size: 35px;
         font-family: $logo-font-family;
+        cursor: pointer;
       }
     }
   }

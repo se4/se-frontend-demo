@@ -1,9 +1,11 @@
 <template>
   <div class="home">
     <div class="title">
-      我的小组
+      我的团队
     </div> 
-    <div class="decoration"/>
+    <div class="decoration-container">
+      <div class="decoration"/>
+    </div>
     <div class="tag-container">
       <tag
         v-for="item in tags" 
@@ -34,7 +36,7 @@ export default {
   computed: {
     ...mapState({
       tags: state => state.tag.tags,
-      userid: state => state.user.profile.userid
+      userid: state => state.user.profile.username
     })
   },
   async mounted() {
@@ -47,13 +49,18 @@ export default {
 @import "../style/config";
 .home {
   max-width: 900px;
+  height: 100%;
   margin: 0 auto;
-  padding: 20px 10px;
 
   .title {
     font-family: $logo-font-family;
     font-size: $logo-font-size;
     color: $logo-color;
+    text-align: center;
+  }
+  .decoration-container {
+    display: flex;
+    justify-content: center;
   }
   .decoration {
     background-color: $logo-color;
@@ -63,7 +70,7 @@ export default {
   }
   .tag-container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
   }
 }
 </style>

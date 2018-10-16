@@ -4,7 +4,7 @@
       ref="ruleForm" 
       :model="ruleForm" 
       :rules="rules" 
-      label-width="80px" 
+      label-width="100px" 
       class="form-body">
       <el-form-item 
         label="团队名称"
@@ -47,10 +47,14 @@ export default {
     };
   },
   methods: {
-    submitForm(formName) {
+    submitForm: function(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
           this.$store.dispatch(ADD_TAGS, this.ruleForm);
+          this.$message({
+            message: "恭喜你，团队创建成功！",
+            type: "success"
+          });
         } else {
           return false;
         }

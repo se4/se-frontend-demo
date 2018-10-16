@@ -3,7 +3,9 @@
     <div class="title">
       个人信息
     </div> 
-    <div class="decoration"/>
+    <div class="decoration-container">
+      <div class="decoration"/>
+    </div>
     <user-info-form />
   </div>
 </template>
@@ -22,6 +24,11 @@ export default {
   font-family: $logo-font-family;
   font-size: $logo-font-size;
   color: $logo-color;
+  text-align: center;
+}
+.decoration-container {
+  display: flex;
+  justify-content: center;
 }
 .decoration {
   background-color: $logo-color;
