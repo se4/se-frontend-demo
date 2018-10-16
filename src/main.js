@@ -12,16 +12,14 @@ import { SET_PROFILE } from "@/store/type/mutations.type";
 Vue.config.productionTip = false;
 
 router.beforeEach((to, from, next) => {
-  if (to.meta) {
-    const { requiresAuth } = to.meta;
-    if (requiresAuth && !getToken()) {
-      router.push({ name: LOGIN_ROUTER });
-    }
+  if (to.meta && to.meta.requiresAuth && !getToken()) {
+    next({ name: LOGIN_ROUTER });
+  } else {
+    next();
   }
-  next();
 });
 
-store.commit(SET_PROFILE, getUserProfile());
+store.commit(SET_PROFILE, getUserProfile() || {});
 
 new Vue({
   router,
