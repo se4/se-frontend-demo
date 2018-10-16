@@ -75,8 +75,8 @@ export default {
             profile: this.ruleForm
           });
           this.$message({
-            message: '恭喜你，信息修改成功！',
-            type: 'success'
+            message: "恭喜你，信息修改成功！",
+            type: "success"
           });
         } else {
           return false;

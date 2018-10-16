@@ -13,7 +13,9 @@
           class="header-link"><div class="header-link-text">设置</div></router-link>
       </div>
       <div class="header-right">
-        <div class="header-logo" v-on:click="onLogout">MOOC</div>
+        <div 
+          class="header-logo" 
+          @click="onLogout">MOOC</div>
       </div>
     </div>
   </div>
@@ -24,7 +26,7 @@ import { LOGOUT } from "@/store/type/actions.type";
 export default {
   name: "MoocHeader",
   methods: {
-    onLogout: function () {
+    onLogout: function() {
       this.$store.dispatch(LOGOUT);
       this.$router.replace("/login");
     }

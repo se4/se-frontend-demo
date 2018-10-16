@@ -1,9 +1,11 @@
 <template>
   <div class="home">
     <div class="title">
-      我的小组
+      我的团队
     </div> 
-    <div class="decoration"/>
+    <div class="decoration-container">
+      <div class="decoration"/>
+    </div>
     <div class="tag-container">
       <tag
         v-for="item in tags" 
@@ -49,13 +51,17 @@ export default {
   max-width: 900px;
   height: 100%;
   margin: 0 auto;
- 
 
   .title {
     font-family: $logo-font-family;
     font-size: $logo-font-size;
     color: $logo-color;
+    text-align: center;
   }
+  .decoration-container {
+  display: flex;
+  justify-content: center;
+}
   .decoration {
     background-color: $logo-color;
     width: 50px;

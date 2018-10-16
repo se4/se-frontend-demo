@@ -47,13 +47,13 @@ export default {
     };
   },
   methods: {
-    submitForm: function (formName) {
+    submitForm: function(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
           this.$store.dispatch(ADD_TAGS, this.ruleForm);
           this.$message({
-            message: '恭喜你，团队创建成功！',
-            type: 'success'
+            message: "恭喜你，团队创建成功！",
+            type: "success"
           });
         } else {
           return false;
