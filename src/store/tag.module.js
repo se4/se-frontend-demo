@@ -1,5 +1,5 @@
-import { FETCH_TAGS } from "./type/actions.type";
-import { CREATE_TAG, SET_CURRENT_TAG, SET_TAGS } from "./type/mutations.type";
+import { FETCH_TAGS, CREATE_TAG } from "./type/actions.type";
+import { SET_CURRENT_TAG, SET_TAGS } from "./type/mutations.type";
 import { createTag, getTagList } from "../api/tag";
 
 const state = {

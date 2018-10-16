@@ -8,6 +8,7 @@ import {
   SET_UPDATE
 } from "@/store/type/mutations.type";
 import { getToken, destroyToken, saveToken } from "@/util/token";
+import { SET_PROFILE } from "./type/mutations.type";
 
 const state = {
   isAuthenticated: !!getToken(),
@@ -20,11 +21,12 @@ const state = {
 const actions = {
   async [LOGIN](context, credentials) {
     try {
-      const { data = {}, abilities = {} } = await login(credentials);
-      const { update } = abilities;
-      const { token, user } = data;
-      context.commit(SET_UPDATE, update);
-      context.commit(SET_AUTH, { token, user });
+      const {
+        data,
+        _header: { Authentication }
+      } = await login(credentials);
+      context.commit(SET_PROFILE, data);
+      context.commit(SET_AUTH, { token: Authentication, profile: data });
     } catch (e) {
       context.commit(SET_LOGIN_ERROR, true);
     }
