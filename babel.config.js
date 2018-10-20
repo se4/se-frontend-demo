@@ -8,5 +8,10 @@ module.exports = {
         styleLibraryName: "theme-chalk"
       }
     ]
-  ]
+  ],
+  env: {
+    test: {
+      presets: [["env", { targets: { node: "current" } }]]
+    }
+  }
 };

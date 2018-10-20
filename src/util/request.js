@@ -84,5 +84,5 @@ export default async function request(url, options) {
   if (newOptions.method === "DELETE" || response.status === 204) {
     return response.text();
   }
-  return { ...response.json(), _headers: response.headers };
+  return { ...(await response.json()), _headers: response.headers };
 }

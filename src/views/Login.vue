@@ -39,6 +39,8 @@
 <script>
 import { HOME_ROUTER } from "@/router/name";
 import { LOGIN } from "@/store/type/actions.type";
+import { SET_LOGIN_ERROR } from "@/store/type/mutations.type";
+import { mapState } from "vuex";
 export default {
   name: "UserLogin",
   data() {
@@ -66,6 +68,19 @@ export default {
       }
     };
   },
+  computed: {
+    ...mapState({
+      errors: state => state.auth.isLoginError
+    })
+  },
+  watch: {
+    credentials: {
+      handler() {
+        this.$store.commit(SET_LOGIN_ERROR, false);
+      },
+      deep: true
+    }
+  },
   methods: {
     onSubmit(formName) {
       this.$refs[formName].validate(async valid => {
@@ -73,7 +88,9 @@ export default {
           this.isLoginLoading = true;
           await this.$store.dispatch(LOGIN, this.credentials);
           this.isLoginLoading = false;
-          this.$router.push({ name: HOME_ROUTER });
+          if (!this.errors) {
+            this.$router.push({ name: HOME_ROUTER });
+          }
         }
       });
     }
