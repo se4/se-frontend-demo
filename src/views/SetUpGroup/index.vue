@@ -6,20 +6,20 @@
     <div class="decoration-container">
       <div class="decoration"/>
     </div>
-    <tag-form/>
+    <group-info-form/>
   </div>
 </template>
 
 <script>
-import TagForm from "@/components/TagForm";
+import GroupInfoForm from "./components/GroupInfoForm";
 export default {
   name: "Group",
-  components: { TagForm }
+  components: { GroupInfoForm }
 };
 </script>
 
 <style lang="scss" scoped>
-@import "../style/config";
+@import "../../style/config";
 .title {
   font-family: $logo-font-family;
   font-size: $logo-font-size;

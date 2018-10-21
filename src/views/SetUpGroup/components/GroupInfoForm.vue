@@ -31,7 +31,7 @@
 <script>
 import { ADD_TAGS } from "@/store/type/actions.type";
 export default {
-  name: "TagForm",
+  name: "GroupInfoForm",
   data() {
     return {
       ruleForm: {

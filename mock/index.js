@@ -12,9 +12,24 @@ app.use(bodyParser.json());
 // =============================================================================
 const router = express.Router();
 
-router.use("/authorization", require("./authorization"));
-router.use("/user", require("./user"));
-router.use("/tag", require("./tag"));
+/** /authorization
+ * [POST]/login 登陆 done
+ * [POST]/register 注册 done
+ */
+router.use("/authorization", require("./modules/authorization"));
+/** /user
+ *[GET]/:userId 获得用户信息 done
+ *[POST]/:userId 修改用户信息 done
+ *[POST]/:userId/password 修改密码 done
+ *[POST]/:userId/tag  添加标签 done
+ */
+router.use("/user", require("./modules/user"));
+/** /tag
+ *[POST] "/" 新增标签 done
+ *[POST] "/:shareLink" 加入标签 done
+ *[GET] "/" 获取标签列表 done
+ */
+router.use("/tag", require("./modules/tag"));
 
 app.use("/api/v1", router);
 app.listen(port);

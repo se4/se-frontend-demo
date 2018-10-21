@@ -1,14 +1,7 @@
+import * as ACTIONS from "@/store/type/actions.type";
+import * as MUTATIONS from "@/store/type/mutations.type";
 import { login, register } from "@/api/authorization";
-import { LOGIN, LOGOUT, REGISTER } from "@/store/type/actions.type";
-import {
-  SET_AUTH,
-  SET_LOGIN_ERROR,
-  REMOVE_AUTH,
-  SET_REGSITER_ERROR,
-  SET_UPDATE
-} from "@/store/type/mutations.type";
 import { getToken, destroyToken, saveToken } from "@/util/token";
-import { SET_PROFILE } from "./type/mutations.type";
 
 const state = {
   isAuthenticated: !!getToken(),
@@ -19,46 +12,49 @@ const state = {
 };
 
 const actions = {
-  async [LOGIN](context, credentials) {
+  async [ACTIONS.LOGIN](context, credentials) {
     try {
       const {
         data,
         _header: { Authentication }
       } = await login(credentials);
-      context.commit(SET_PROFILE, data);
-      context.commit(SET_AUTH, { token: Authentication, profile: data });
+      context.commit(MUTATIONS.SET_PROFILE, data);
+      context.commit(MUTATIONS.SET_AUTH, {
+        token: Authentication,
+        profile: data
+      });
     } catch (e) {
-      context.commit(SET_LOGIN_ERROR, true);
+      context.commit(MUTATIONS.SET_LOGIN_ERROR, true);
     }
   },
-  [LOGOUT](context) {
-    context.commit(REMOVE_AUTH);
+  [ACTIONS.LOGOUT](context) {
+    context.commit(MUTATIONS.REMOVE_AUTH);
   },
-  async [REGISTER](context, credentials) {
+  async [ACTIONS.REGISTER](context, credentials) {
     try {
       await register(credentials);
     } catch (e) {
-      context.commit(SET_REGSITER_ERROR, true);
+      context.commit(MUTATIONS.SET_REGSITER_ERROR, true);
     }
   }
 };
 
 const mutations = {
-  [SET_LOGIN_ERROR](state, error) {
+  [MUTATIONS.SET_LOGIN_ERROR](state, error) {
     state.isLoginError = error;
   },
-  [SET_REGSITER_ERROR](state, error) {
+  [MUTATIONS.SET_REGSITER_ERROR](state, error) {
     state.isRegisterError = error;
   },
-  [SET_AUTH](state, user) {
+  [MUTATIONS.SET_AUTH](state, user) {
     state.isAuthenticated = true;
     saveToken(user.token, user.user);
   },
-  [REMOVE_AUTH](state) {
+  [MUTATIONS.REMOVE_AUTH](state) {
     state.isAuthenticated = false;
     destroyToken();
   },
-  [SET_UPDATE](state, canUpdate = false) {
+  [MUTATIONS.SET_UPDATE](state, canUpdate = false) {
     state.update = canUpdate;
   }
 };
