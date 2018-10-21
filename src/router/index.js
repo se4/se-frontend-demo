@@ -20,13 +20,13 @@ export default new Router({
         {
           name: REGISTER_ROUTER,
           path: "/register",
-          component: () => import("@/views/Register"),
+          component: () => import("@/views/Register/index"),
           meta: { requiresAuth: false }
         },
         {
           name: LOGIN_ROUTER,
           path: "",
-          component: () => import("@/views/Login"),
+          component: () => import("@/views/Login/index"),
           meta: { requiresAuth: false }
         }
       ]
@@ -39,19 +39,19 @@ export default new Router({
         {
           name: HOME_ROUTER,
           path: "",
-          component: () => import("@/views/Home"),
+          component: () => import("@/views/Home/index"),
           meta: { requiresAuth: true }
         },
         {
           name: GROUP_ROUTER,
           path: "/group",
-          component: () => import("@/views/Group"),
+          component: () => import("@/views/SetUpGroup/index"),
           meta: { requiresAuth: true }
         },
         {
           name: USER_INFO_ROUTER,
           path: "/user",
-          component: () => import("@/views/UserInfo"),
+          component: () => import("@/views/UserInfo/index"),
           meta: { requiresAuth: true }
         }
       ]

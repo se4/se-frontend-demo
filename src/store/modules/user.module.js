@@ -1,13 +1,11 @@
-import { fetchUserProfile } from "@/api/user";
-import { FETCH_PROFILE } from "@/store/type/actions.type";
+import * as ACTIONS from "@/store/type/actions.type";
+import * as MUTATIONS from "@/store/type/mutations.type";
 import {
-  SET_PROFILE,
-  SET_UPDATE,
-  ADD_TAG,
-  SET_PROFILE_UPDATE
-} from "./type/mutations.type";
-import { UPDATE_PROFILE, CHANGE_PASSWORD, ADD_TAGS } from "./type/actions.type";
-import { updateProfile, changePassword, addTag } from "../api/user";
+  fetchUserProfile,
+  updateProfile,
+  changePassword,
+  addTag
+} from "@/api/user";
 
 const state = {
   tags: [],
@@ -53,33 +51,33 @@ const actions = {
   //   const { tags } = await fetchUserTags();
   //   context.commit(SET_TAGS, tags);
   // },
-  async [FETCH_PROFILE](context, userid) {
+  async [ACTIONS.FETCH_PROFILE](context, userid) {
     const { userSerializer, abilities } = await generateUserSerializer(
       async () => await fetchUserProfile(userid)
     );
     const { update = false } = abilities;
-    context.commit(SET_PROFILE, userSerializer);
-    context.commit(SET_UPDATE, update);
+    context.commit(MUTATIONS.SET_PROFILE, userSerializer);
+    context.commit(MUTATIONS.SET_UPDATE, update);
   },
-  async [CHANGE_PASSWORD](context, { userid, oldPassword }) {
+  async [ACTIONS.CHANGE_PASSWORD](context, { userid, oldPassword }) {
     const { userSerializer, abilities } = await generateUserSerializer(
       async () => await changePassword(userid, oldPassword)
     );
     const { update = false } = abilities;
-    context.commit(SET_PROFILE, userSerializer);
-    context.commit(SET_UPDATE, update);
+    context.commit(MUTATIONS.SET_PROFILE, userSerializer);
+    context.commit(MUTATIONS.SET_UPDATE, update);
   },
-  async [UPDATE_PROFILE](context, { userid, profile }) {
+  async [ACTIONS.UPDATE_PROFILE](context, { userid, profile }) {
     const { userSerializer } = await generateUserSerializer(
       async () => await updateProfile(userid, profile)
     );
-    context.commit(SET_PROFILE, userSerializer);
+    context.commit(MUTATIONS.SET_PROFILE, userSerializer);
   },
-  async [ADD_TAGS](context, { userid, shareLink }) {
+  async [ACTIONS.ADD_TAGS](context, { userid, shareLink }) {
     const { tagSerializer } = await generateTagSerializer(
       async () => await addTag(userid, shareLink)
     );
-    context.commit(ADD_TAG, tagSerializer);
+    context.commit(MUTATIONS.ADD_TAG, tagSerializer);
   }
 };
 
@@ -87,13 +85,13 @@ const mutations = {
   // [SET_TAGS](state, tags) {
   //   state.tags = tags;
   // },
-  [SET_PROFILE](state, userSerializer) {
+  [MUTATIONS.SET_PROFILE](state, userSerializer) {
     state.profile = userSerializer;
   },
-  [SET_PROFILE_UPDATE](state, canUpdate = false) {
+  [MUTATIONS.SET_PROFILE_UPDATE](state, canUpdate = false) {
     state.update = canUpdate;
   },
-  [ADD_TAG](state, tagSerializer) {
+  [MUTATIONS.ADD_TAG](state, tagSerializer) {
     state.tags.push(tagSerializer);
   }
 };

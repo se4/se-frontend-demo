@@ -46,7 +46,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../style/config";
+@import "../../style/config";
 .home {
   max-width: 900px;
   height: 100%;

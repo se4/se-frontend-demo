@@ -1,6 +1,6 @@
-import { FETCH_TAGS, CREATE_TAG } from "./type/actions.type";
-import { SET_CURRENT_TAG, SET_TAGS } from "./type/mutations.type";
-import { createTag, getTagList } from "../api/tag";
+import * as ACTIONS from "@/store/type/actions.type";
+import * as MUTATIONS from "@/store/type/mutations.type";
+import { createTag, getTagList } from "@/api/tag";
 
 const state = {
   currentTag: {},
@@ -24,23 +24,23 @@ const generateTagSerializer = async (callback = () => {}) => {
 };
 
 const actions = {
-  async [CREATE_TAG](context, { type, name }) {
+  async [ACTIONS.CREATE_TAG](context, { type, name }) {
     const { tagSerializer } = await generateTagSerializer(
       async () => await createTag({ type, name })
     );
-    context.commit(SET_CURRENT_TAG, tagSerializer);
+    context.commit(MUTATIONS.SET_CURRENT_TAG, tagSerializer);
   },
-  async [FETCH_TAGS](context, userid) {
+  async [ACTIONS.FETCH_TAGS](context, userid) {
     const { data = [] } = await getTagList(userid);
-    context.commit(SET_TAGS, data);
+    context.commit(MUTATIONS.SET_TAGS, data);
   }
 };
 
 const mutations = {
-  [SET_TAGS](state, tags) {
+  [MUTATIONS.SET_TAGS](state, tags) {
     state.tags = tags;
   },
-  [SET_CURRENT_TAG](state, tagSerializer) {
+  [MUTATIONS.SET_CURRENT_TAG](state, tagSerializer) {
     state.currentTag = tagSerializer;
   }
 };

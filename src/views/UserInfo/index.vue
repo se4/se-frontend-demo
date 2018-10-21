@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import UserInfoForm from "@/components/UserInfoForm";
+import UserInfoForm from "./components/UserInfoForm";
 
 export default {
   components: { UserInfoForm }
@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../style/config";
+@import "../../style/config";
 .title {
   font-family: $logo-font-family;
   font-size: $logo-font-size;

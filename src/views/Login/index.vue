@@ -82,7 +82,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../style/config";
+@import "../../style/config";
 .intro {
   color: $oc-gray-7;
   text-align: center;
