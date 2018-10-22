@@ -19,7 +19,7 @@ export default {
   name: "Tag",
   props: {
     tagId: {
-      type: String,
+      type: Number,
       required: true
     },
     tagType: {
