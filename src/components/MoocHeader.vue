@@ -12,7 +12,7 @@
           to="/user"
           class="header-link"><div class="header-link-text">设置</div></router-link>
         <router-link
-          to="/user"
+          to="/tag"
           class="header-link"><div class="header-link-text">Tags</div></router-link>
       </div>
       <div class="header-right">

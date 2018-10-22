@@ -1,18 +1,18 @@
 <template>
   <div class="form-main">
-    <el-form 
-      ref="ruleForm" 
-      :model="ruleForm" 
-      :rules="rules" 
-      label-width="100px" 
+    <el-form
+      ref="ruleForm"
+      :model="ruleForm"
+      :rules="rules"
+      label-width="100px"
       class="form-body">
-      <el-form-item 
-        label="团队名称"
+      <el-form-item
+        label="邀请链接"
         prop="name">
         <el-input v-model="ruleForm.name"/>
       </el-form-item>
-      <el-form-item 
-        label="团队类型" 
+      <el-form-item
+        label="团队类型"
         prop="type">
         <el-radio-group v-model="ruleForm.type">
           <el-radio label="GROUP"/>
@@ -20,18 +20,19 @@
         </el-radio-group>
       </el-form-item>
       <el-form-item>
-        <el-button 
-          type="primary" 
-          @click="submitForm('ruleForm')">立即创建</el-button>
+        <el-button
+          type="primary"
+          @click="submitForm('ruleForm')">加入</el-button>
       </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script>
-import { ADD_TAGS } from "@/store/type/actions.type";
+import { mapState } from "vuex";
+import { JOIN_TAGS } from "@/store/type/actions.type";
 export default {
-  name: "GroupInfoForm",
+  name: "JoinGroupForm",
   data() {
     return {
       ruleForm: {
@@ -40,19 +41,29 @@ export default {
       },
       rules: {
         name: [
-          { min: 3, max: 10, message: "长度在 3 到 10 个字符", trigger: "blur" }
+          { min: -1, max: 100, message: "请输入合法的邀请码", trigger: "blur" }
         ],
-        type: [{ required: true, message: "请选择团队类型", trigger: "change" }]
+        type: [
+          { required: false, message: "请选择团队类型", trigger: "change" }
+        ]
       }
     };
+  },
+  computed: {
+    ...mapState({
+      userID: state => state.user.profile.id
+    })
   },
   methods: {
     submitForm: function(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          this.$store.dispatch(ADD_TAGS, this.ruleForm);
+          this.$store.dispatch(JOIN_TAGS, {
+            sharedLink: this.ruleForm.name,
+            userid: this.userID
+          });
           this.$message({
-            message: "恭喜你，团队创建成功！",
+            message: "已加入团队！",
             type: "success"
           });
         } else {

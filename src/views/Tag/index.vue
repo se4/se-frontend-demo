@@ -1,20 +1,20 @@
 <template>
   <div class="group-main">
     <div class="title">
-      创建团队
-    </div> 
+      加入团队
+    </div>
     <div class="decoration-container">
       <div class="decoration"/>
     </div>
-    <group-info-form/>
+    <join-group-form/>
   </div>
 </template>
 
 <script>
-import GroupInfoForm from "./components/GroupInfoForm";
+import JoinGroupForm from "./components/JoinGroupForm";
 export default {
-  name: "Group",
-  components: { GroupInfoForm }
+  name: "JoinGroup",
+  components: { JoinGroupForm }
 };
 </script>
 

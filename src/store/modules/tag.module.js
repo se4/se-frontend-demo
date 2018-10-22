@@ -35,7 +35,7 @@ const actions = {
     const { data = [] } = await getTagList(userid);
     context.commit(MUTATIONS.SET_TAGS, data);
   },
-  async [ACTIONS.ADD_TAGS](context, { userid, shareLink }) {
+  async [ACTIONS.JOIN_TAGS](context, { userid, shareLink }) {
     const { data } = await addTag({ userid, shareLink });
     context.commit(SET_TAGS, data);
   }
