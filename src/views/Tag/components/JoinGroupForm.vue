@@ -11,14 +11,7 @@
         prop="name">
         <el-input v-model="ruleForm.name"/>
       </el-form-item>
-      <el-form-item
-        label="团队类型"
-        prop="type">
-        <el-radio-group v-model="ruleForm.type">
-          <el-radio label="GROUP"/>
-          <el-radio label="CLASS"/>
-        </el-radio-group>
-      </el-form-item>
+
       <el-form-item>
         <el-button
           type="primary"
@@ -36,15 +29,11 @@ export default {
   data() {
     return {
       ruleForm: {
-        name: "",
-        type: ""
+        name: ""
       },
       rules: {
         name: [
           { min: -1, max: 100, message: "请输入合法的邀请码", trigger: "blur" }
-        ],
-        type: [
-          { required: false, message: "请选择团队类型", trigger: "change" }
         ]
       }
     };
