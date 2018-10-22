@@ -8,6 +8,7 @@ import "./style/main.scss";
 import { getToken, getUserProfile } from "@/util/token";
 import { LOGIN_ROUTER } from "@/router/name";
 import { SET_PROFILE } from "@/store/type/mutations.type";
+import "@/registerServiceWorker";
 
 Vue.config.productionTip = false;
 
