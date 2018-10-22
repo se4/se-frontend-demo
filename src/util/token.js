@@ -6,8 +6,8 @@ export const getToken = () => {
 };
 
 export const saveToken = (token, profile) => {
-  window.localStorage.setItem(ID_TOKEN_KEY, token);
-  window.localStorage.setItem(USER_PROFILE, JSON.stringify(profile));
+  token && window.localStorage.setItem(ID_TOKEN_KEY, token);
+  profile && window.localStorage.setItem(USER_PROFILE, JSON.stringify(profile));
 };
 
 export const destroyToken = () => {
@@ -15,5 +15,11 @@ export const destroyToken = () => {
 };
 
 export const getUserProfile = () => {
-  return JSON.parse(window.localStorage.getItem(USER_PROFILE));
+  let userProfile = window.localStorage.getItem(USER_PROFILE);
+  try {
+    userProfile = JSON.parse(userProfile);
+  } catch (e) {
+    userProfile = {};
+  }
+  return userProfile;
 };

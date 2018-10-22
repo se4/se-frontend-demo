@@ -14,13 +14,10 @@ const state = {
 const actions = {
   async [ACTIONS.LOGIN](context, credentials) {
     try {
-      const { data, _Authentication } = await login(credentials);
-      const Authentication = _Authentication;
+      const { data, Authorization } = await login(credentials);
       context.commit(MUTATIONS.SET_PROFILE, data);
-      context.commit(MUTATIONS.SET_AUTH, {
-        token: Authentication,
-        profile: data
-      });
+      context.commit(MUTATIONS.SET_AUTH, true);
+      saveToken(Authorization, data);
     } catch (e) {
       context.commit(MUTATIONS.SET_LOGIN_ERROR, true);
     }
@@ -44,9 +41,8 @@ const mutations = {
   [MUTATIONS.SET_REGSITER_ERROR](state, error) {
     state.isRegisterError = error;
   },
-  [MUTATIONS.SET_AUTH](state, user) {
-    state.isAuthenticated = true;
-    saveToken(user.token, user.user);
+  [MUTATIONS.SET_AUTH](state, isAuthenticated = true) {
+    state.isAuthenticated = isAuthenticated;
   },
   [MUTATIONS.REMOVE_AUTH](state) {
     state.isAuthenticated = false;

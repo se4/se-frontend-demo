@@ -85,7 +85,8 @@ export default async function request(url, options) {
     return response.text();
   }
 
-  const Authorization = response.headers.get("Authorization");
+  const Authorization = await response.headers.get("Authorization");
+  const body = await response.json();
 
-  return { ...(await response.json()), _Authorization: Authorization };
+  return { ...body, Authorization };
 }
