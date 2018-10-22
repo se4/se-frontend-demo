@@ -7,13 +7,13 @@
           class="header-link"><div class="header-link-text">主页</div></router-link>
         <router-link
           to="/group"
-          class="header-link"><div class="header-link-text">团队</div></router-link>
+          class="header-link"><div class="header-link-text">创建</div></router-link>
         <router-link
           to="/user"
           class="header-link"><div class="header-link-text">设置</div></router-link>
         <router-link
           to="/tag"
-          class="header-link"><div class="header-link-text">Tags</div></router-link>
+          class="header-link"><div class="header-link-text">加入</div></router-link>
       </div>
       <div class="header-right">
         <div

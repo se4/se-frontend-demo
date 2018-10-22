@@ -1,27 +1,27 @@
 <template>
   <div class="form-main">
-    <el-form 
-      ref="ruleForm" 
-      :model="ruleForm" 
-      :rules="rules" 
-      label-width="100px" 
+    <el-form
+      ref="ruleForm"
+      :model="ruleForm"
+      :rules="rules"
+      label-width="100px"
       class="form-body">
-      <el-form-item 
-        label="个人昵称" 
+      <el-form-item
+        label="个人昵称"
         prop="name">
         <el-input v-model="ruleForm.nickname"/>
       </el-form-item>
-      <el-form-item 
-        label="个人简介" 
+      <el-form-item
+        label="个人简介"
         prop="bio">
-        <el-input 
-          :rows="4" 
-          v-model="ruleForm.bio" 
+        <el-input
+          :rows="4"
+          v-model="ruleForm.bio"
           type="textarea"/>
       </el-form-item>
       <el-form-item>
-        <el-button 
-          type="primary" 
+        <el-button
+          type="primary"
           @click="submitForm('ruleForm')">保存修改</el-button>
       </el-form-item>
     </el-form>
@@ -59,7 +59,7 @@ export default {
     ...mapState({
       profile: state => state.user.profile,
       username: state => state.user.profile.username,
-      userid: state => state.user.profile.userid
+      userid: state => state.user.profile.id
     })
   },
   async mounted() {

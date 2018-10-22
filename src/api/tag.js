@@ -7,7 +7,7 @@ const DEFAULT_USER_ID = "-1";
  * @returns {{_headers}}
  */
 export const createTag = ({ type = "GROUP", name = "githubakers" }) => {
-  return request(`${TAG_MODULE}/`, {
+  return request(`${TAG_MODULE}`, {
     method: "POST",
     body: {
       type: type,
@@ -22,22 +22,4 @@ export const createTag = ({ type = "GROUP", name = "githubakers" }) => {
  */
 export const getTagList = (userid = DEFAULT_USER_ID) => {
   return request(`${TAG_MODULE}?userId=${userid}`);
-};
-
-/**
- * 用户为自己增加标签(通过shareLink)
- * @returns {object}{
- *   data:Array<TagSerializer>
- * }
- */
-export const addTag = ({
-  userid = DEFAULT_USER_ID,
-  shareLink = "www.baidu.com"
-}) => {
-  return request(`${TAG_MODULE}?shareLink=${shareLink}`, {
-    method: "POST",
-    body: {
-      userId: userid
-    }
-  });
 };

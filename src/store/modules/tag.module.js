@@ -1,27 +1,13 @@
 import * as ACTIONS from "@/store/type/actions.type";
 import * as MUTATIONS from "@/store/type/mutations.type";
-import { addTag, createTag, getTagList } from "@/api/tag";
+import { createTag, getTagList } from "@/api/tag";
+import { addTag } from "@/api/user";
 import { SET_TAGS } from "@/store/type/mutations.type";
+import { generateTagSerializer } from "@/util/serializer";
 
 const state = {
   currentTag: {},
   tags: []
-};
-
-const generateTagSerializer = async (callback = () => {}) => {
-  const { data = {} } = await callback();
-  const {
-    tagSerializer = {
-      id: "000",
-      type: "GROUP",
-      shareLink: "www.baidu.com",
-      name: "TagMaker",
-      owners: [],
-      createdAt: "2010-10-01",
-      updatedAt: "2010-10-01"
-    }
-  } = data;
-  return { tagSerializer };
 };
 
 const actions = {
@@ -36,7 +22,7 @@ const actions = {
     context.commit(MUTATIONS.SET_TAGS, data);
   },
   async [ACTIONS.JOIN_TAGS](context, { userid, shareLink }) {
-    const { data } = await addTag({ userid, shareLink });
+    const { data } = await addTag(userid, shareLink);
     context.commit(SET_TAGS, data);
   }
 };

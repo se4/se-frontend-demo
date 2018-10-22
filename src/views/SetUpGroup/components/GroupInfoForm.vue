@@ -1,18 +1,18 @@
 <template>
   <div class="form-main">
-    <el-form 
-      ref="ruleForm" 
-      :model="ruleForm" 
-      :rules="rules" 
-      label-width="100px" 
+    <el-form
+      ref="ruleForm"
+      :model="ruleForm"
+      :rules="rules"
+      label-width="100px"
       class="form-body">
-      <el-form-item 
+      <el-form-item
         label="团队名称"
         prop="name">
         <el-input v-model="ruleForm.name"/>
       </el-form-item>
-      <el-form-item 
-        label="团队类型" 
+      <el-form-item
+        label="团队类型"
         prop="type">
         <el-radio-group v-model="ruleForm.type">
           <el-radio label="GROUP"/>
@@ -20,8 +20,8 @@
         </el-radio-group>
       </el-form-item>
       <el-form-item>
-        <el-button 
-          type="primary" 
+        <el-button
+          type="primary"
           @click="submitForm('ruleForm')">立即创建</el-button>
       </el-form-item>
     </el-form>
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { ADD_TAGS } from "@/store/type/actions.type";
+import { CREATE_TAG } from "@/store/type/actions.type";
 export default {
   name: "GroupInfoForm",
   data() {
@@ -50,7 +50,7 @@ export default {
     submitForm: function(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          this.$store.dispatch(ADD_TAGS, this.ruleForm);
+          this.$store.dispatch(CREATE_TAG, this.ruleForm);
           this.$message({
             message: "恭喜你，团队创建成功！",
             type: "success"

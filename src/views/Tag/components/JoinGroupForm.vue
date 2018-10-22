@@ -48,7 +48,7 @@ export default {
       this.$refs[formName].validate(valid => {
         if (valid) {
           this.$store.dispatch(JOIN_TAGS, {
-            sharedLink: this.ruleForm.name,
+            shareLink: this.ruleForm.name,
             userid: this.userID
           });
           this.$message({

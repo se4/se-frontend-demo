@@ -72,7 +72,7 @@ export default {
         callback(new Error("用户名长度必须大于5"));
       } else if (!regex.test(value)) {
         callback(
-          new Error("用户名必须以英文字符开头，且只能包含英文或数字或下划线")
+          new Error("用户名必须以英文字符开头，且只能包含英文或数 字或下划线")
         );
       } else {
         this.$store.commit(SET_REGSITER_ERROR, false);

@@ -2,19 +2,19 @@
   <div class="home">
     <div class="title">
       我的团队
-    </div> 
+    </div>
     <div class="decoration-container">
       <div class="decoration"/>
     </div>
     <div class="tag-container">
       <tag
-        v-for="item in tags" 
+        v-for="item in tags"
         :key="item.id"
         :tag-id="item.id"
-        :tag-type="item.type" 
-        :share-link="item.shareLink" 
-        :tag-name="item.name" 
-        :created-at="item.createdAt" 
+        :tag-type="item.type"
+        :share-link="item.shareLink"
+        :tag-name="item.name"
+        :created-at="item.createdAt"
         :updated-at="item.updatedAt" />
     </div>
   </div>
@@ -36,7 +36,7 @@ export default {
   computed: {
     ...mapState({
       tags: state => state.tag.tags,
-      userid: state => state.user.profile.username
+      userid: state => state.user.profile.id
     })
   },
   async mounted() {

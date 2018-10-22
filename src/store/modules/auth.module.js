@@ -25,7 +25,7 @@ const actions = {
       context.commit(MUTATIONS.SET_LOGIN_ERROR, true);
     }
   },
-  [ACTIONS.LOGOUT](context) {
+  async [ACTIONS.LOGOUT](context) {
     context.commit(MUTATIONS.REMOVE_AUTH);
   },
   async [ACTIONS.REGISTER](context, credentials) {

@@ -3,8 +3,8 @@ import * as MUTATIONS from "@/store/type/mutations.type";
 import {
   fetchUserProfile,
   updateProfile,
-  changePassword,
-  addTag
+  changePassword
+  // addTag
 } from "@/api/user";
 
 const state = {
@@ -30,27 +30,8 @@ const generateUserSerializer = async (callback = () => {}) => {
   } = data;
   return { userSerializer, abilities };
 };
-const generateTagSerializer = async (callback = () => {}) => {
-  const { data = {} } = await callback();
-  const {
-    tagSerializer = {
-      id: "000",
-      type: "GROUP",
-      shareLink: "www.baidu.com",
-      name: "TagMaker",
-      owners: [],
-      createdAt: "2010-10-01",
-      updatedAt: "2010-10-01"
-    }
-  } = data;
-  return { tagSerializer };
-};
 
 const actions = {
-  // async [FETCH_TAGS](context) {
-  //   const { tags } = await fetchUserTags();
-  //   context.commit(SET_TAGS, tags);
-  // },
   async [ACTIONS.FETCH_PROFILE](context, userid) {
     const { userSerializer, abilities } = await generateUserSerializer(
       async () => await fetchUserProfile(userid)
@@ -72,19 +53,10 @@ const actions = {
       async () => await updateProfile(userid, profile)
     );
     context.commit(MUTATIONS.SET_PROFILE, userSerializer);
-  },
-  async [ACTIONS.ADD_TAGS](context, { userid, shareLink }) {
-    const { tagSerializer } = await generateTagSerializer(
-      async () => await addTag(userid, shareLink)
-    );
-    context.commit(MUTATIONS.ADD_TAG, tagSerializer);
   }
 };
 
 const mutations = {
-  // [SET_TAGS](state, tags) {
-  //   state.tags = tags;
-  // },
   [MUTATIONS.SET_PROFILE](state, userSerializer) {
     state.profile = userSerializer;
   },
