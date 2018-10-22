@@ -14,7 +14,10 @@ const state = {
 const actions = {
   async [ACTIONS.LOGIN](context, credentials) {
     try {
-      const { data, Authorization } = await login(credentials);
+      const {
+        data,
+        _header: { Authorization }
+      } = await login(credentials);
       context.commit(MUTATIONS.SET_PROFILE, data);
       context.commit(MUTATIONS.SET_AUTH, true);
       saveToken(Authorization, data);
