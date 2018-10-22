@@ -14,10 +14,8 @@ const state = {
 const actions = {
   async [ACTIONS.LOGIN](context, credentials) {
     try {
-      const {
-        data,
-        _header: { Authentication }
-      } = await login(credentials);
+      const { data, _Authentication } = await login(credentials);
+      const Authentication = _Authentication;
       context.commit(MUTATIONS.SET_PROFILE, data);
       context.commit(MUTATIONS.SET_AUTH, {
         token: Authentication,

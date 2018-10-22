@@ -84,5 +84,8 @@ export default async function request(url, options) {
   if (newOptions.method === "DELETE" || response.status === 204) {
     return response.text();
   }
-  return { ...(await response.json()), _headers: response.headers };
+
+  const Authorization = response.headers.get("Authorization");
+
+  return { ...(await response.json()), _Authorization: Authorization };
 }
