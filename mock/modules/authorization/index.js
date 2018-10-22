@@ -6,7 +6,8 @@ router.route("/login").post((req, res) => {
   //登录
   const token = "Bearer EGbbP8ZWU1u-7dogAj97N5gemefVyVpR_50eErvfssA";
   const setSendValue = role => {
-    res.append("Authorization", token);
+    res.append("" +
+      "", token);
     res.send({
       data: UserSerializer(role)
     });

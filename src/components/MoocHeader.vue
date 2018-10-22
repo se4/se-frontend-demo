@@ -2,19 +2,22 @@
   <div class="header-main">
     <div class="header-body">
       <div class="header-left">
-        <router-link 
-          to="/" 
+        <router-link
+          to="/"
           class="header-link"><div class="header-link-text">主页</div></router-link>
-        <router-link 
-          to="/group" 
+        <router-link
+          to="/group"
           class="header-link"><div class="header-link-text">团队</div></router-link>
-        <router-link 
-          to="/user" 
+        <router-link
+          to="/user"
           class="header-link"><div class="header-link-text">设置</div></router-link>
+        <router-link
+          to="/user"
+          class="header-link"><div class="header-link-text">Tags</div></router-link>
       </div>
       <div class="header-right">
-        <div 
-          class="header-logo" 
+        <div
+          class="header-logo"
           @click="onLogout">MOOC</div>
       </div>
     </div>

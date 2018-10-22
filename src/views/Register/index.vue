@@ -10,45 +10,45 @@
         type="error"
         show-icon/>
     </div>
-    <el-form 
+    <el-form
       ref="registerForm"
       :model="credentials"
       :rules="rules"
-      status-icon 
+      status-icon
     >
-      <el-form-item 
-        label="用户名" 
+      <el-form-item
+        label="用户名"
         prop="username">
-        <el-input 
+        <el-input
           v-model="credentials.username"
-          type="username" 
+          type="username"
           placeholder="username" />
       </el-form-item>
-      <el-form-item 
-        label="密码" 
+      <el-form-item
+        label="密码"
         prop="password">
-        <el-input 
-          v-model="credentials.password" 
+        <el-input
+          v-model="credentials.password"
           type="password"
           placeholder="password"/>
       </el-form-item>
-      <el-form-item 
-        label="请再次输入密码" 
+      <el-form-item
+        label="请再次输入密码"
         prop="passwordAgain">
-        <el-input 
-          v-model="credentials.passwordAgain" 
+        <el-input
+          v-model="credentials.passwordAgain"
           type="password"
           placeholder="repeat password"/>
       </el-form-item>
       <el-form-item>
         <div class="action-section">
-          <el-button 
+          <el-button
             :loading="isRegisterLoading"
-            style="width:150px;" 
+            style="width:150px;"
             type="primary"
             @click="onSubmit('registerForm')">注 册</el-button>
-          <router-link 
-            :to="{ name: 'login'}" 
+          <router-link
+            :to="{ name: 'login'}"
             class="link" >已有账号 <i class="el-icon-arrow-right"/></router-link>
         </div>
       </el-form-item>
@@ -68,15 +68,12 @@ export default {
       const regex = /([a-zA-Z]+[0-9a-zA-Z_]*)/;
       if (value === "") {
         callback(new Error("请输入用户名"));
-        return;
       } else if (value.length < 5) {
         callback(new Error("用户名长度必须大于5"));
-        return;
       } else if (!regex.test(value)) {
         callback(
           new Error("用户名必须以英文字符开头，且只能包含英文或数字或下划线")
         );
-        return;
       } else {
         this.$store.commit(SET_REGSITER_ERROR, false);
         callback();
@@ -86,12 +83,10 @@ export default {
       const regex = /(^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]{6,30})$)/;
       if (value === "") {
         callback(new Error("请输入密码"));
-        return;
       } else if (!regex.test(value)) {
         callback(
           new Error("密码同时包含至少一位数字和一位字母，长度在6-30之间")
         );
-        return;
       } else {
         callback();
       }
@@ -99,10 +94,8 @@ export default {
     const validatePasswordAgain = (rule, value, callback) => {
       if (value === "") {
         callback(new Error("请再次输入密码"));
-        return;
       } else if (value !== this.credentials.password) {
         callback(new Error("两个密码不同！"));
-        return;
       } else {
         callback();
       }

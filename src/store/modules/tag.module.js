@@ -1,6 +1,7 @@
 import * as ACTIONS from "@/store/type/actions.type";
 import * as MUTATIONS from "@/store/type/mutations.type";
-import { createTag, getTagList } from "@/api/tag";
+import { addTag, createTag, getTagList } from "@/api/tag";
+import { SET_TAGS } from "@/store/type/mutations.type";
 
 const state = {
   currentTag: {},
@@ -33,6 +34,10 @@ const actions = {
   async [ACTIONS.FETCH_TAGS](context, userid) {
     const { data = [] } = await getTagList(userid);
     context.commit(MUTATIONS.SET_TAGS, data);
+  },
+  async [ACTIONS.ADD_TAGS](context, { userid, shareLink }) {
+    const { data } = await addTag({ userid, shareLink });
+    context.commit(SET_TAGS, data);
   }
 };
 
