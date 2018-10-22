@@ -5,7 +5,8 @@ import {
   REGISTER_ROUTER,
   HOME_ROUTER,
   USER_INFO_ROUTER,
-  GROUP_ROUTER
+  GROUP_ROUTER,
+  TAG_ROUTER
 } from "@/router/name";
 
 Vue.use(Router);
@@ -40,6 +41,12 @@ export default new Router({
           name: HOME_ROUTER,
           path: "",
           component: () => import("@/views/Home/index"),
+          meta: { requiresAuth: true }
+        },
+        {
+          name: TAG_ROUTER,
+          path: "/tag",
+          component: () => import("@/views/Tag/index"),
           meta: { requiresAuth: true }
         },
         {
